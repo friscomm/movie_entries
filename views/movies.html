@@ -1,0 +1,37 @@
+<head>
+<style>
+body { font-family: 'Helvetica', 'Arial', sans-serif; }
+</style>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+
+<div class="well">
+<h1>Submit Movie</h1>
+<form action="/movies-2" method="POST">
+  <fieldset class="form-group">
+    <label for="formGroupTitle">Title</label>
+    <input type="text" class="form-control" id="formGroupTitle" name="title" value="" placeholder="Enter Movie's Title Here">
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="formGroupYear">Year</label>
+    <input type="text" class="form-control" id="formGroupYear" name="year" value="" placeholder="Enter Movie's Year Here">
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="formGroupImdb">IMDB</label>
+    <input type="text" class="form-control" id="formGroupImdb" name="imdb" value="" placeholder="Enter Movie's IMDB URL Code Here">
+  </fieldset>
+  <button type="submit" value="Submit" class="btn btn-primary">Enter</button>
+</form>
+</div>
+
+
+<div class="well">
+<h1>Current List of Movies</h1>
+{% for movie in movies %}
+  <li><a href="http://www.imdb.com/title/{{ movie.imdb }}">{{ movie.title }}, {{ movie.year }}</a></li>
+{% else %}
+  <li>No movies found.</li>
+{% endfor %}
+</div>
